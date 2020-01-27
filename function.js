@@ -1,5 +1,5 @@
 import moment from "moment";
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 
 /*min ? */
 import "react-dates/initialize";
@@ -30,19 +30,17 @@ class App extends Component {
     return (
       <div className="App">
         <Apod date={this.state.date.toISOString().substring(0, 10)} />
-        <div className="date">
-          <SingleDatePicker
-            numberOfMonths={1}
-            isOutsideRange={() => false}
-            isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())}
-            // isOutsideRange={day => isAfterDay(day, moment()}
-            date={this.state.date} // momentPropTypes.momentObj or null
-            onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
-            focused={this.state.focused} // PropTypes.bool
-            onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-            id="your_unique_id" // PropTypes.string.isRequired,
-          />
-        </div>
+        <SingleDatePicker
+          numberOfMonths={1}
+          isOutsideRange={() => false}
+          isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())}
+          // isOutsideRange={day => isAfterDay(day, moment()}
+          date={this.state.date} // momentPropTypes.momentObj or null
+          onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
+          focused={this.state.focused} // PropTypes.bool
+          onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+          id="your_unique_id" // PropTypes.string.isRequired,
+        />
       </div>
     );
   }
